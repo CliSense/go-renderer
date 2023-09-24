@@ -1,1 +1,3 @@
 .vscode
+src/go-renderer/go-renderer.exe
+src/go-renderer/go.sum
