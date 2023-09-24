@@ -5,8 +5,13 @@ import (
 )
 
 func main() {
-	box := tview.NewBox().SetBorder(true).SetTitle("Hello, world!")
-	if err := tview.NewApplication().SetRoot(box, true).Run(); err != nil {
+	app := tview.NewApplication()
+
+	box := tview.NewBox().
+		SetText("Hello, world!").
+		SetBorder(true)
+
+	if err := app.SetRoot(box, true).Run(); err != nil {
 		panic(err)
 	}
 }
