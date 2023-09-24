@@ -1,8 +1,10 @@
 package main
 
 import (
-	"github.com/rivo/tview"
+	"fmt"
 	"time"
+
+	"github.com/rivo/tview"
 )
 
 func main() {
@@ -12,9 +14,11 @@ func main() {
 	loadingText := tview.NewTextView().
 		SetText("Loading...").
 		SetTextAlign(tview.AlignCenter).
-		SetTextAlignVertical(tview.AlignMiddle).
 		SetDynamicColors(true).
 		SetText("")
+
+	// Add padding to align text vertically in the middle
+	loadingText.SetBorder(true).SetBorderPadding(1, 1, 2, 2)
 
 	// Add the TextView to the application
 	if err := app.SetRoot(loadingText, true).Run(); err != nil {
@@ -28,7 +32,7 @@ func main() {
 				loadingText.Clear()
 
 				// Set the loading animation text
-				loadingText.SetText("Loading" + "...."[i:i+1])
+				loadingText.SetText(fmt.Sprintf("Loading%s", "...."[i:i+1]))
 
 				// Refresh the application
 				app.Draw()
